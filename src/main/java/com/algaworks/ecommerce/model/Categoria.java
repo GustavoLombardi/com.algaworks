@@ -4,10 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -18,32 +16,18 @@ import javax.persistence.Table;
 public class Categoria {
     @EqualsAndHashCode.Include
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
-    @Column(name = "categoria_pai_id")
-    private Integer categoriaPaiId;
 
-    public Integer getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "categoria_pai_id")
+    private Categoria categoriaPai;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "categoriaPai")
+    private List<Categoria> categorias;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Integer getCategoriaPaiId() {
-        return categoriaPaiId;
-    }
-
-    public void setCategoriaPaiId(Integer categoriaPaiId) {
-        this.categoriaPaiId = categoriaPaiId;
-    }
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos;
 }

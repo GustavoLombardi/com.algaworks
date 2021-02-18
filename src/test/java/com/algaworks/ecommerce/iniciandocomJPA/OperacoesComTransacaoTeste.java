@@ -30,7 +30,7 @@ public class OperacoesComTransacaoTeste extends EntityManagerTest {
     @Test
     public void inserirObjetoComMerge(){
         Produto produto = new Produto();
-        produto.setId(4);
+        //produto.setId(4);
         produto.setNome("Microfone Rode Videmic");
         produto.setDescricao("A melhor qualidade de som");
         produto.setPreco(new BigDecimal(1000));
@@ -69,7 +69,7 @@ public class OperacoesComTransacaoTeste extends EntityManagerTest {
     public void atualizarObjeto(){
 
         Produto produto = new Produto();
-        produto.setId(1);
+       produto.setId(1);
         produto.setNome("Kindle PaperWhite");
         produto.setDescricao("Conheça o novo Kindle");
         produto.setPreco(new BigDecimal(599));
@@ -107,7 +107,7 @@ public class OperacoesComTransacaoTeste extends EntityManagerTest {
 
 
         Produto produto = new Produto();
-        produto.setId(2);
+        //produto.setId(2);
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para suas fotos");
         produto.setPreco(new BigDecimal(5000));
@@ -128,13 +128,13 @@ public class OperacoesComTransacaoTeste extends EntityManagerTest {
     @Test
     public void abrirEFecharATransacao(){
 
-        Produto produto = new Produto();
+        //Produto produto = new Produto();
 
         entityManager.getTransaction().begin();
 
-        entityManager.persist(produto);
-        entityManager.merge(produto);
-        entityManager.remove(produto);
+        //entityManager.persist(produto);
+        //entityManager.merge(produto);
+        //entityManager.remove(produto);
 
         entityManager.getTransaction().commit();
     }
