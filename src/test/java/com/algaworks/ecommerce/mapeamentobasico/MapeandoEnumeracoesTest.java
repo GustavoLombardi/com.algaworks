@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.mapeamentobasico;
 
+
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.SexoCliente;
@@ -9,9 +10,9 @@ import org.junit.Test;
 public class MapeandoEnumeracoesTest extends EntityManagerTest {
 
     @Test
-    public void testarEnum(){
+    public void testarEnum() {
         Cliente cliente = new Cliente();
-        //cliente.setId(4); Comentado pois estamos usando IDENTITY
+//        cliente.setId(4); Comentado porque estamos utilizando IDENTITY
         cliente.setNome("José Mineiro");
         cliente.setSexo(SexoCliente.MASCULINO);
 
@@ -22,13 +23,6 @@ public class MapeandoEnumeracoesTest extends EntityManagerTest {
         entityManager.clear();
 
         Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-
         Assert.assertNotNull(clienteVerificacao);
-
-
-
-
     }
-
-
 }

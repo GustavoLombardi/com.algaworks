@@ -12,17 +12,15 @@ import java.time.LocalDateTime;
 public class RelacionamentosManyToOneTeste extends EntityManagerTest {
 
     @Test
-    public void verificarRelacionamento(){
-        Cliente cliente = entityManager.find(Cliente.class, 2);
-        Produto produto = entityManager.find(Produto.class, 1);
+    public void verificarRelacionamento() {
+        Cliente cliente = entityManager.find(Cliente.class, 1);
 
         Pedido pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setDataPedido(LocalDateTime.now());
-        pedido.setCliente(cliente);
         pedido.setTotal(BigDecimal.TEN);
 
-
+        pedido.setCliente(cliente);
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);
@@ -32,13 +30,11 @@ public class RelacionamentosManyToOneTeste extends EntityManagerTest {
 
         Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
         Assert.assertNotNull(pedidoVerificacao.getCliente());
-
-
     }
 
     @Test
     public void verificarRelacionamentoItemPedido() {
-        Cliente cliente = entityManager.find(Cliente.class, 2);
+        Cliente cliente = entityManager.find(Cliente.class, 1);
         Produto produto = entityManager.find(Produto.class, 1);
 
         Pedido pedido = new Pedido();
